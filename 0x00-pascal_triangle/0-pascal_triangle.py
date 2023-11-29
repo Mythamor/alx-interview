@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+0-pascal_triangle:
+A module that describes how to create a pascal traingle
+"""
 
 def pascal_triangle(n):
     """
