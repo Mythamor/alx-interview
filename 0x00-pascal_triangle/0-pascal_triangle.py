@@ -4,6 +4,7 @@
 A module that describes how to create a pascal traingle
 """
 
+
 def pascal_triangle(n):
     """
     first diagonal contains all 1s
