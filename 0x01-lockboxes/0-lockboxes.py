@@ -15,18 +15,12 @@ def canUnlockAll(boxes):
     n = len(boxes)
 
     # Initialize a set with the first box, that's always unlocked
-    unlocked_boxes = {0}
+    unlocked_boxes = {}
 
-    visited_boxes = set()
-
-    # Create a list of the keys in the first box
-    keys_to_try = boxes[0]
-
-    while keys_to_try:
-        key = keys_to_try.pop()
-        if key not in visited_boxes:
-            visited_boxes.add(key)
-            unlocked_boxes.add(key)
-            keys_to_try.extend(boxes[key])
-
+    for index, box in enumerate(boxes):
+        if len(box) == 0 or index == 0:
+            unlocked_boxes[index] = index
+        for key in box:
+            if key < len(boxes) and key != index:
+                unlocked_boxes[key] = key
     return len(unlocked_boxes) == n
