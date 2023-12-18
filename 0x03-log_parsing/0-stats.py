@@ -20,7 +20,7 @@ try:
 
         if len(parts) > 4:
             # Update the metrics
-            status_code = parts[-2]
+            status_code = int(parts[-2])
             file_size = int(parts[-1])
 
             # Check if status code exists in given dict
@@ -34,7 +34,10 @@ try:
             count += 1
 
         # Print metrics after every 10 lines
-        if count == 10:
+        if count % 10 == 0:
+
+            # Reset count
+            count = 0
 
             # Print the update file size
             print(f"File size: {total_file_size}")
