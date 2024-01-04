@@ -44,4 +44,3 @@ def validUTF8(data):
         i += num_bytes
 
     return True
-        
