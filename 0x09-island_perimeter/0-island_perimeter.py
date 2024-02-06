@@ -4,6 +4,7 @@
 Module: 0. Island Perimeter
 """
 
+
 def island_perimeter(grid):
     """
     It returns the perimeter of the isalnd described in the grid
