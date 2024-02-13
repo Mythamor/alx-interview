@@ -14,5 +14,6 @@
 7. 0x07-rotate_2d_matrix
 8. 0x08-making_change
 9. 0x09. Island Perimeter
+10. 0x0A. Prime Game
 
 > Author: [Mithamo Beth](https://www.mithamo.tech)
