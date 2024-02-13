@@ -10,24 +10,22 @@ def is_prime(n):
     """
     finds prime numbers upto a given value
     """
-    if n <= 1:
+    if n < 2:
         return False
-    if n <= 3:
-        return True
-    if n % 2 == 0 or n % 3 == 0:
-        return False
-    i = 5
-    while i * i <= n:
-        if n % 1 == 0 or n % (i + 2) == 0:
+
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
             return False
-        i += 6
     return True
 
 
-# Helper function to find winner in num of games
-def prime_numbers(n):
+# Helper function to find number of primes in a given range
+def prime_numbers(start, end):
+    """"
+    Finds number of primes in a given range
+    """
     primes = []
-    for i in range(2, n + 1):
+    for i in range(start, end + 1):
         if is_prime(i):
             primes.append(i)
     return primes
@@ -38,19 +36,38 @@ def isWinner(x, nums):
     Determines winner using prime numbers
     """
 
-    maria = 0
-    ben = 0
+    maria_wins = 0
+    ben_wins = 0
 
     for n in nums:
-        primes = prime_numbers(n)
-        if len(primes) % 2 == 0:
-            ben += 1
-        else:
-            maria += 1
+        divisible_nums = list(range(1, n + 1))
+        primes = prime_numbers(1, n)
 
-    if maria > ben:
+        if not primes:
+            ben_wins += 1
+            continue
+
+        maria_turn = True
+
+        while (True):
+            if not primes:
+                if maria_turn:
+                    ben_wins += 1
+                else:
+                    maria_wins += 1
+                break
+
+            smallest_prime = primes.pop(0)
+            divisible_nums.remove(smallest_prime)
+
+            divisible_nums = [x for x in divisible_nums if x %
+                              smallest_prime != 0]
+
+            maria_turn = not maria_turn
+
+    if maria_wins > ben_wins:
         return "Maria"
-    elif ben > maria:
+    elif ben_wins > maria_wins:
         return "Ben"
     else:
         return None
